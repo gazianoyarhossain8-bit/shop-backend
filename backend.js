@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import productRouter from './routes/product.js'; 
 import dotenv from 'dotenv';
-import connectDB from './ConnectDB.js';
+import connectDB from './connectDB.js';
 import cookieparser from 'cookie-parser';
 
 
