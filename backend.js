@@ -26,6 +26,9 @@ app.use('/images', express.static('images')); // Serve static files from the upl
 
 // Routes
 app.use('/api', productRouter);
+app.get('/', (req, res) => {
+    res.send('Welcome to the backend server!');
+});
 
 // Start the server
 
