@@ -1,8 +1,10 @@
 import multer from "multer";
-import {cloudinaryStorage} from "multer-storage-cloudinary";
+import pkg from "multer-storage-cloudinary";
 import cloudinary from "../cloudinary.js";
 
-const storage = cloudinaryStorage({
+const { CloudinaryStorage } = pkg;
+
+const storage = new CloudinaryStorage({
     cloudinary,
     folder: "chat-images",
     allowedFormats: ["jpg", "png", "gif", "jpeg","bmp", "webp","mp4"],
