@@ -1,15 +1,13 @@
-import multer from 'multer';
-import path from 'path';
-// Set up storage engine for multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {   
-    cb(null, 'images/'); // Directory to save uploaded files
-  }
-    ,
-    filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Generate a unique filename
-  }
+import multer from "multer";
+import {cloudinaryStorage} from "multer-storage-cloudinary";
+import cloudinary from "../cloudinary.js";
+
+const storage = cloudinaryStorage({
+    cloudinary,
+    folder: "chat-images",
+    allowedFormats: ["jpg", "png", "gif", "jpeg","bmp", "webp","mp4"],
+    transformation: [{ width: 500, height: 500, crop: "limit" }],
 });
-// Initialize multer with the defined storage engine
-const upload = multer({ storage: storage });
+
+const upload = multer({ storage });
 export default upload;
